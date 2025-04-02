@@ -1,165 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Introvert Superpower Quiz</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f7ff;
-      margin: 0;
-      padding: 20px;
-    }
-    .quiz-section {
-      background: #f0ebff;
-      border: 2px solid #6b54b6;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    .quiz-title {
-      font-size: 28px;
-      font-weight: bold;
-      color: #6b54b6;
-    }
-    .quiz-text {
-      font-size: 18px;
-      color: #333;
-      margin: 10px 0;
-    }
-    .rating {
-      display: flex;
-      gap: 10px;
-    }
-    .rating button {
-      width: 40px;
-      height: 40px;
-      border: 2px solid #6b54b6;
-      border-radius: 50%;
-      background-color: white;
-      color: #6b54b6;
-      font-size: 16px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .rating button.selected {
-      background-color: #6b54b6;
-      color: white;
-    }
-    #result {
-      display: none;
-      background: #4a9d9a;
-      color: white;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      margin-top: 20px;
-    }
-    form {
-      margin-top: 20px;
-      display: none;
-    }
-    input[type="text"], input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    button.submit {
-      background-color: #6b54b6;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <h1 style="color:#6b54b6; text-align:center;">Introvert Superpower Quiz</h1>
-  <form id="quizForm" action="https://formspree.io/f/xoqgldzy" method="POST">
-    <div class="quiz-section" data-question="q1">
-      <div class="quiz-title">Creative Flow</div>
-      <div class="quiz-text">I get my best ideas when I'm alone or in nature.</div>
-      <div class="rating">
-        <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
-      </div>
-      <input type="hidden" name="Creative Flow" value="">
-    </div>
-    <div class="quiz-section" data-question="q2">
-      <div class="quiz-title">Energy Recharge</div>
-      <div class="quiz-text">I regularly create space to recharge, without guilt.</div>
-      <div class="rating">
-        <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
-      </div>
-      <input type="hidden" name="Energy Recharge" value="">
-    </div>
-    <div class="quiz-section" data-question="q3">
-      <div class="quiz-title">Strategic Thinking</div>
-      <div class="quiz-text">I often notice details and patterns others miss.</div>
-      <div class="rating">
-        <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
-      </div>
-      <input type="hidden" name="Strategic Thinking" value="">
-    </div>
-    <div class="quiz-section" data-question="q4">
-      <div class="quiz-title">Authentic Presence</div>
-      <div class="quiz-text">I don't need to be the loudest to be impactful.</div>
-      <div class="rating">
-        <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
-      </div>
-      <input type="hidden" name="Authentic Presence" value="">
-    </div>
-    <div class="quiz-section" data-question="q5">
-      <div class="quiz-title">Boundaries & Balance</div>
-      <div class="quiz-text">I say no without overexplaining or apologizing.</div>
-      <div class="rating">
-        <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
-      </div>
-      <input type="hidden" name="Boundaries & Balance" value="">
-    </div>
-    <div id="result"></div>
-    <label for="name">Name (optional):</label>
-    <input type="text" name="name" id="name">
-    <label for="email">Email (optional):</label>
-    <input type="email" name="email" id="email">
-    <input type="hidden" name="Total Score" id="totalScore">
-    <input type="hidden" name="Result" id="quizResult">
-    <button type="submit" class="submit">Send My Results</button>
-  </form>
-  <script>
-    const quizForm = document.getElementById("quizForm");
-    const resultBox = document.getElementById("result");
-    document.querySelectorAll(".rating").forEach((section, index) => {
-      const buttons = section.querySelectorAll("button");
-      buttons.forEach(button => {
-        button.addEventListener("click", () => {
-          buttons.forEach(btn => btn.classList.remove("selected"));
-          button.classList.add("selected");
-          const input = quizForm.querySelectorAll("input[type='hidden']")[index];
-          input.value = button.textContent;
-          calculateScore();
-        });
-      });
-    });
-    function calculateScore() {
-      const scores = Array.from(quizForm.querySelectorAll("input[type='hidden']")).slice(0, 5).map(input => parseInt(input.value) || 0);
-      if (scores.every(score => score > 0)) {
-        const total = scores.reduce((a, b) => a + b, 0);
-        document.getElementById("totalScore").value = total;
-        let resultText = "";
-        if (total <= 10) resultText = "The Hidden Gem: Quiet, reflective, and full of potential waiting to shine.";
-        else if (total <= 15) resultText = "The Grounded Thinker: Balanced, introspective, and purpose-driven.";
-        else if (total <= 20) resultText = "The Quiet Leader: You lead through calm confidence and subtle strength.";
-        else resultText = "The Powerful Visionary: Your inner world drives outer impact.";
-        document.getElementById("quizResult").value = resultText;
-        resultBox.innerHTML = `<h2>Your Result:</h2><p>${resultText}</p>`;
-        resultBox.style.display = "block";
-        quizForm.style.display = "block";
-      }
-    }
-  </script>
-</body>
-</html>
+Introvert Superpower Quiz
+
+Introvert Superpower Quiz
+Creative Flow
+I get my best ideas when I'm alone or in nature.
+1
+2
+3
+4
+5
+Energy Recharge
+I regularly create space to recharge, without guilt.
+1
+2
+3
+4
+5
+Strategic Thinking
+I often notice details and patterns others miss.
+1
+2
+3
+4
+5
+Authentic Presence
+I don't need to be the loudest to be impactful.
+1
+2
+3
+4
+5
+Boundaries & Balance
+I say no without overexplaining or apologizing.
+1
+2
+3
+4
+5
+Name (optional): Email (optional): Send My Results 
+
