@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Introvert Superpower Quiz</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f9f7ff;
+      background-color: #f9f7ff;
       margin: 0;
       padding: 20px;
     }
@@ -52,6 +52,7 @@
       padding: 20px;
       margin-top: 20px;
       border-radius: 10px;
+      text-align: center;
     }
     .submit {
       margin-top: 20px;
@@ -63,53 +64,80 @@
       border: none;
       cursor: pointer;
     }
+    #flodesk-form-section {
+      display: none;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
   <h1 style="text-align:center; color:#6b54b6;">Introvert Superpower Quiz</h1>
 
-  <div class="quiz-section" data-question="q1">
-    <div class="quiz-title">Creative Flow</div>
-    <div class="quiz-text">I get my best ideas when I'm alone or in nature.</div>
-    <div class="rating">
-      <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button>
+  <div id="quiz">
+    <div class="quiz-section" data-question="q1">
+      <div class="quiz-title">Creative Flow</div>
+      <div class="quiz-text">I get my best ideas when I'm alone or in nature.</div>
+      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
     </div>
+    <div class="quiz-section" data-question="q2">
+      <div class="quiz-title">Energy Recharge</div>
+      <div class="quiz-text">I regularly create space to recharge, without guilt.</div>
+      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+    </div>
+    <div class="quiz-section" data-question="q3">
+      <div class="quiz-title">Strategic Thinking</div>
+      <div class="quiz-text">I often notice details and patterns others miss.</div>
+      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+    </div>
+    <div class="quiz-section" data-question="q4">
+      <div class="quiz-title">Authentic Presence</div>
+      <div class="quiz-text">I don't need to be the loudest to be impactful.</div>
+      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+    </div>
+    <div class="quiz-section" data-question="q5">
+      <div class="quiz-title">Boundaries & Balance</div>
+      <div class="quiz-text">I say no without overexplaining or apologizing.</div>
+      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+    </div>
+    <div class="quiz-section" data-question="q6">
+      <div class="quiz-title">Focused Listener</div>
+      <div class="quiz-text">People feel truly heard when I listen — even in silence.</div>
+      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+    </div>
+    <div class="quiz-section" data-question="q7">
+      <div class="quiz-title">Solo Recharge</div>
+      <div class="quiz-text">I often choose solitude over social plans to reset my energy.</div>
+      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+    </div>
+    <div class="quiz-section" data-question="q8">
+      <div class="quiz-title">Purposeful Speaker</div>
+      <div class="quiz-text">I only speak when I feel what I say will matter.</div>
+      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+    </div>
+    <div class="quiz-section" data-question="q9">
+      <div class="quiz-title">Detail-Oriented</div>
+      <div class="quiz-text">I notice things most people overlook — and it helps me plan better.</div>
+      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+    </div>
+    <div class="quiz-section" data-question="q10">
+      <div class="quiz-title">Low-Drama Boundaries</div>
+      <div class="quiz-text">I’ve learned how to set boundaries without causing drama.</div>
+      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+    </div>
+    <button class="submit" onclick="showForm()">Continue</button>
   </div>
 
-  <div class="quiz-section" data-question="q2">
-    <div class="quiz-title">Energy Recharge</div>
-    <div class="quiz-text">I regularly create space to recharge, without guilt.</div>
-    <div class="rating">
-      <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button>
-    </div>
-  </div>
-
-  <div class="quiz-section" data-question="q3">
-    <div class="quiz-title">Strategic Thinking</div>
-    <div class="quiz-text">I often notice details and patterns others miss.</div>
-    <div class="rating">
-      <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button>
-    </div>
-  </div>
-
-  <div class="quiz-section" data-question="q4">
-    <div class="quiz-title">Authentic Presence</div>
-    <div class="quiz-text">I don't need to be the loudest to be impactful.</div>
-    <div class="rating">
-      <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button>
-    </div>
-  </div>
-
-  <div class="quiz-section" data-question="q5">
-    <div class="quiz-title">Boundaries & Balance</div>
-    <div class="quiz-text">I say no without overexplaining or apologizing.</div>
-    <div class="rating">
-      <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button>
-    </div>
+  <div id="flodesk-form-section">
+    <div id="fd-form-67edc0b7f15990c20ce93409"></div>
+    <script>
+      window.fd('form', {
+        formId: '67edc0b7f15990c20ce93409',
+        containerEl: '#fd-form-67edc0b7f15990c20ce93409'
+      });
+    </script>
   </div>
 
   <div id="result"></div>
-  <button class="submit" onclick="calculateResult()">See My Result</button>
 
   <script>
     document.querySelectorAll('.rating').forEach(section => {
@@ -122,7 +150,7 @@
       });
     });
 
-    function calculateResult() {
+    function showForm() {
       const ratings = document.querySelectorAll('.rating');
       let total = 0;
       let complete = true;
@@ -134,21 +162,24 @@
           complete = false;
         }
       });
-
       if (!complete) {
-        alert('Please rate all questions!');
+        alert('Please rate all 10 questions first.');
         return;
       }
-
-      let result = '';
-      if (total <= 10) result = "🌱 The Hidden Gem – Quiet, reflective, full of untapped potential.";
-      else if (total <= 15) result = "🧘 The Grounded Thinker – Balanced and deeply insightful.";
-      else if (total <= 20) result = "🦉 The Quiet Leader – Calm confidence with powerful presence.";
-      else result = "🌟 The Powerful Visionary – Bold ideas, rooted in introverted strength.";
-
-      document.getElementById('result').innerHTML = `<h2>Your Result:</h2><p>${result}</p>`;
-      document.getElementById('result').style.display = 'block';
+      let resultText = '';
+      if (total <= 20) resultText = "🌱 The Hidden Gem – Quiet, reflective, full of untapped potential.";
+      else if (total <= 30) resultText = "🧘 The Grounded Thinker – Balanced and deeply insightful.";
+      else if (total <= 40) resultText = "🦉 The Quiet Leader – Calm confidence with powerful presence.";
+      else resultText = "🌟 The Powerful Visionary – Bold ideas, rooted in introverted strength.";
+      document.getElementById('quiz').style.display = 'none';
+      document.getElementById('flodesk-form-section').style.display = 'block';
+      document.getElementById('result').innerHTML = `<h2>Your Result:</h2><p>${resultText}</p>`;
+      document.getElementById('result').style.display = 'none'; // Reveal only after form submission manually
     }
+  </script>
+</body>
+</html>
+
   </script>
 </body>
 </html>
