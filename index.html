@@ -1,40 +1,157 @@
-Introvert Superpower Quiz
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Introvert Superpower Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f7ff;
+      margin: 0;
+      padding: 20px;
+    }
+    .quiz-section {
+      background: #f0ebff;
+      border: 2px solid #6b54b6;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .quiz-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #6b54b6;
+    }
+    .quiz-text {
+      font-size: 18px;
+      color: #333;
+      margin: 10px 0;
+    }
+    .rating {
+      display: flex;
+      gap: 10px;
+    }
+    .rating button {
+      width: 40px;
+      height: 40px;
+      border: 2px solid #6b54b6;
+      border-radius: 50%;
+      background: white;
+      color: #6b54b6;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .rating button.selected {
+      background: #6b54b6;
+      color: white;
+    }
+    #result {
+      display: none;
+      background: #4a9d9a;
+      color: white;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+    .submit {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      background: #6b54b6;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center; color:#6b54b6;">Introvert Superpower Quiz</h1>
 
-Introvert Superpower Quiz
-Creative Flow
-I get my best ideas when I'm alone or in nature.
-1
-2
-3
-4
-5
-Energy Recharge
-I regularly create space to recharge, without guilt.
-1
-2
-3
-4
-5
-Strategic Thinking
-I often notice details and patterns others miss.
-1
-2
-3
-4
-5
-Authentic Presence
-I don't need to be the loudest to be impactful.
-1
-2
-3
-4
-5
-Boundaries & Balance
-I say no without overexplaining or apologizing.
-1
-2
-3
-4
-5
-Name (optional): Email (optional): Send My Results 
+  <div class="quiz-section" data-question="q1">
+    <div class="quiz-title">Creative Flow</div>
+    <div class="quiz-text">I get my best ideas when I'm alone or in nature.</div>
+    <div class="rating">
+      <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button>
+    </div>
+  </div>
+
+  <div class="quiz-section" data-question="q2">
+    <div class="quiz-title">Energy Recharge</div>
+    <div class="quiz-text">I regularly create space to recharge, without guilt.</div>
+    <div class="rating">
+      <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button>
+    </div>
+  </div>
+
+  <div class="quiz-section" data-question="q3">
+    <div class="quiz-title">Strategic Thinking</div>
+    <div class="quiz-text">I often notice details and patterns others miss.</div>
+    <div class="rating">
+      <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button>
+    </div>
+  </div>
+
+  <div class="quiz-section" data-question="q4">
+    <div class="quiz-title">Authentic Presence</div>
+    <div class="quiz-text">I don't need to be the loudest to be impactful.</div>
+    <div class="rating">
+      <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button>
+    </div>
+  </div>
+
+  <div class="quiz-section" data-question="q5">
+    <div class="quiz-title">Boundaries & Balance</div>
+    <div class="quiz-text">I say no without overexplaining or apologizing.</div>
+    <div class="rating">
+      <button>1</button><button>2</button><button>3</button><button>4</button><button>5</button>
+    </div>
+  </div>
+
+  <div id="result"></div>
+  <button class="submit" onclick="calculateResult()">See My Result</button>
+
+  <script>
+    document.querySelectorAll('.rating').forEach(section => {
+      const buttons = section.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          buttons.forEach(btn => btn.classList.remove('selected'));
+          button.classList.add('selected');
+        });
+      });
+    });
+
+    function calculateResult() {
+      const ratings = document.querySelectorAll('.rating');
+      let total = 0;
+      let complete = true;
+      ratings.forEach(section => {
+        const selected = section.querySelector('button.selected');
+        if (selected) {
+          total += parseInt(selected.textContent);
+        } else {
+          complete = false;
+        }
+      });
+
+      if (!complete) {
+        alert('Please rate all questions!');
+        return;
+      }
+
+      let result = '';
+      if (total <= 10) result = "🌱 The Hidden Gem – Quiet, reflective, full of untapped potential.";
+      else if (total <= 15) result = "🧘 The Grounded Thinker – Balanced and deeply insightful.";
+      else if (total <= 20) result = "🦉 The Quiet Leader – Calm confidence with powerful presence.";
+      else result = "🌟 The Powerful Visionary – Bold ideas, rooted in introverted strength.";
+
+      document.getElementById('result').innerHTML = `<h2>Your Result:</h2><p>${result}</p>`;
+      document.getElementById('result').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+
+
 
