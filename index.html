@@ -45,15 +45,6 @@
       background: #6b54b6;
       color: white;
     }
-    #result {
-      display: none;
-      background: #4a9d9a;
-      color: white;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 10px;
-      text-align: center;
-    }
     .submit {
       margin-top: 20px;
       padding: 10px 20px;
@@ -63,10 +54,6 @@
       color: white;
       border: none;
       cursor: pointer;
-    }
-    #flodesk-form-section {
-      display: none;
-      margin-top: 20px;
     }
   </style>
 </head>
@@ -124,20 +111,8 @@
       <div class="quiz-text">I’ve learned how to set boundaries without causing drama.</div>
       <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
     </div>
-    <button class="submit" onclick="showForm()">Continue</button>
+    <button class="submit" onclick="calculateAndRedirect()">See My Result</button>
   </div>
-
-  <div id="flodesk-form-section">
-    <div id="fd-form-67edc0b7f15990c20ce93409"></div>
-    <script>
-      window.fd('form', {
-        formId: '67edc0b7f15990c20ce93409',
-        containerEl: '#fd-form-67edc0b7f15990c20ce93409'
-      });
-    </script>
-  </div>
-
-  <div id="result"></div>
 
   <script>
     document.querySelectorAll('.rating').forEach(section => {
@@ -150,7 +125,7 @@
       });
     });
 
-    function showForm() {
+    function calculateAndRedirect() {
       const ratings = document.querySelectorAll('.rating');
       let total = 0;
       let complete = true;
@@ -162,26 +137,24 @@
           complete = false;
         }
       });
+
       if (!complete) {
-        alert('Please rate all 10 questions first.');
+        alert('Please answer all 10 questions before continuing.');
         return;
       }
-      let resultText = '';
-      if (total <= 20) resultText = "🌱 The Hidden Gem – Quiet, reflective, full of untapped potential.";
-      else if (total <= 30) resultText = "🧘 The Grounded Thinker – Balanced and deeply insightful.";
-      else if (total <= 40) resultText = "🦉 The Quiet Leader – Calm confidence with powerful presence.";
-      else resultText = "🌟 The Powerful Visionary – Bold ideas, rooted in introverted strength.";
-      document.getElementById('quiz').style.display = 'none';
-      document.getElementById('flodesk-form-section').style.display = 'block';
-      document.getElementById('result').innerHTML = `<h2>Your Result:</h2><p>${resultText}</p>`;
-      document.getElementById('result').style.display = 'none'; // Reveal only after form submission manually
+
+      let resultType = '';
+      if (total <= 20) resultType = 'hidden';
+      else if (total <= 30) resultType = 'thinker';
+      else if (total <= 40) resultType = 'leader';
+      else resultType = 'visionary';
+
+      const redirectUrl = `https://introvertquiz.pages.dev/result.html?type=${resultType}`;
+      window.location.href = redirectUrl;
     }
   </script>
 </body>
 </html>
 
-  </script>
-</body>
-</html>
 
 
