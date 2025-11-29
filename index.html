@@ -104,7 +104,121 @@
     .quiz-intro {
       margin-top: 10px;
       margin-bottom: 24px;
-      f
+      font-size: 0.95rem;
+      color: #3c4b63;
+      line-height: 1.5;
+    }
+
+    /* Quiz sections (your questions) */
+
+    #quiz {
+      margin-top: 4px;
+    }
+
+    .quiz-section {
+      background: rgba(155, 186, 215, 0.08);
+      border-radius: 12px;
+      padding: 16px 14px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(45, 95, 139, 0.18);
+    }
+
+    .quiz-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dc-navy);
+      margin-bottom: 4px;
+    }
+
+    .quiz-text {
+      font-size: 0.95rem;
+      color: #334562;
+      margin: 6px 0 10px;
+    }
+
+    .rating {
+      display: flex;
+      gap: 8px;
+      justify-content: space-between;
+    }
+
+    .rating button {
+      flex: 1;
+      max-width: 50px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(45, 95, 139, 0.4);
+      background: var(--dc-white);
+      color: var(--dc-slate);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease,
+        border-color 0.15s ease, transform 0.1s ease,
+        box-shadow 0.1s ease;
+    }
+
+    .rating button.selected {
+      background: linear-gradient(135deg, var(--dc-slate), var(--dc-navy));
+      color: var(--dc-white);
+      border-color: var(--dc-slate);
+      box-shadow: 0 6px 16px rgba(0, 31, 61, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .rating button:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(0, 31, 61, 0.25);
+    }
+
+    .submit {
+      margin-top: 24px;
+      padding: 12px 26px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--dc-slate), var(--dc-navy));
+      color: var(--dc-white);
+      border: none;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 10px 24px rgba(0, 31, 61, 0.35);
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        opacity 0.12s ease;
+    }
+
+    .submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(0, 31, 61, 0.38);
+    }
+
+    .submit:active {
+      transform: translateY(1px);
+      box-shadow: 0 6px 16px rgba(0, 31, 61, 0.25);
+    }
+
+    .quiz-footer {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      text-align: center;
+      color: #7a889c;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="quiz-wrapper">
+    <div class="quiz-container">
+      
+      <!-- Header with logo + title -->
+      <header class="quiz-header">
+        <div class="quiz-logo">
+          <img src="dc-logo.png" alt="Drew Chaz Logo" />
+        </div>
+        <div class="quiz-title-bl
+
 
 
 
