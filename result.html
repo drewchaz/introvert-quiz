@@ -1,172 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Introvert Superpower</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Introvert Superpower Result</title>
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f6f2f2;
-            color: #001f3d;
-        }
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f6f2f2;
+      color: #001f3d;
+    }
 
-        .result-box {
-            max-width: 850px;
-            margin: 50px auto;
-            background: white;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
+    .result-box {
+      max-width: 900px;
+      margin: 50px auto;
+      background: #ffffff;
+      padding: 48px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
 
-        /* ⭐ NEW HEADER ROW — LOGO + TITLE ON SAME LINE */
-        .header-row {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            margin-bottom: 25px;
-        }
+    /* logo + title row */
+    .header-row {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 16px;
+    }
 
-        .logo img {
-            width: 130px; /* Adjust logo size */
-            display: block;
-        }
+    .logo img {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      border-radius: 50%;
+      border: 2px solid #d3d7e3;
+      padding: 16px;
+      background: #ffffff;
+    }
 
-        #title {
-            font-size: 65px;
-            font-weight: 700;
-            margin: 0;
-            padding: 0;
-            color: #2d5f8b; /* Your brand blue */
-        }
+    #title {
+      font-size: 48px;
+      font-weight: 800;
+      margin: 0;
+      color: #2d5f8b;
+      line-height: 1.1;
+    }
 
-        .tagline {
-            font-size: 22px;
-            margin-top: 10px;
-            margin-bottom: 25px;
-            color: #001f3d;
-            line-height: 1.5;
-        }
+    .tagline {
+      font-size: 22px;
+      margin-top: 8px;
+      margin-bottom: 24px;
+      color: #001f3d;
+      line-height: 1.5;
+    }
 
-        ul {
-            font-size: 20px;
-            line-height: 1.7;
-            padding-left: 25px;
-            margin-bottom: 30px;
-        }
+    ul {
+      font-size: 20px;
+      line-height: 1.7;
+      padding-left: 24px;
+      margin-top: 0;
+      margin-bottom: 28px;
+    }
 
-        .highlight {
-            background: #f6f2f2;
-            border: 2px dashed #9bbad7;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 20px;
-            line-height: 1.5;
-            margin-bottom: 30px;
-        }
+    .highlight {
+      background: #fdf7f4;
+      border: 2px dashed #9bbad7;
+      padding: 20px 24px;
+      border-radius: 16px;
+      font-size: 20px;
+      line-height: 1.5;
+      margin-bottom: 32px;
+      color: #001f3d;
+    }
 
-        .button {
-            display: inline-block;
-            background: #2d5f8b;
-            color: white;
-            padding: 18px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 22px;
-            font-weight: 600;
-        }
+    .button {
+      display: inline-block;
+      background: #2d5f8b;
+      color: #ffffff;
+      padding: 18px 40px;
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 20px;
+      font-weight: 600;
+    }
 
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 16px;
-            color: #001f3d;
-        }
-    </style>
+    .button:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 15px;
+      color: #001f3d;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="result-box">
-
-        <!-- ⭐ FIXED HEADER ROW -->
-        <div class="header-row">
-            <div class="logo">
-                <img src="dc-logo.png" alt="Drew Chaz Logo">
-            </div>
-
-            <h1 id="title">Your Introvert Superpower</h1>
-        </div>
-
-        <p class="tagline" id="tagline"></p>
-
-        <ul id="list"></ul>
-
-        <div class="highlight" id="highlight"></div>
-
-        <a class="button" href="https://drewchaz.github.io/introvert-quiz/">Retake Quiz</a>
-
-        <footer>
-            © 2025 Drew Chaz · Quiet Power, Real Results
-        </footer>
-
+  <div class="result-box">
+    <!-- LOGO + RESULT TITLE -->
+    <div class="header-row">
+      <div class="logo">
+        <img src="dc-logo.png" alt="Drew Chaz Logo" />
+      </div>
+      <h1 id="title">Your Introvert Superpower</h1>
     </div>
 
-    <script>
-        // Grab URL params
-        const urlParams = new URLSearchParams(window.location.search);
-        const result = urlParams.get("result");
+    <p class="tagline" id="tagline"></p>
 
-        // Quiz results data
-        const results = {
-            visionary: {
-                title: "Quiet Visionary",
-                tagline: "Your ideas are built for long-term impact — now build structure.",
-                bullets: [
-                    "You think ahead while others react.",
-                    "You see big-picture possibilities.",
-                    "Your ideas can change lives when you give them a plan."
-                ],
-                highlight: "Choose a 30-day project and channel your ideas into something tangible."
-            },
-            strategist: {
-                title: "Quiet Strategist",
-                tagline: "You see patterns others miss — and you turn them into smart decisions.",
-                bullets: [
-                    "You break complexity into simple steps.",
-                    "You make decisions based on logic, not noise.",
-                    "You stay calm under pressure while others spiral."
-                ],
-                highlight: "Build a simple 3-step plan for your next business or career move."
-            },
-            creator: {
-                title: "Quiet Creator",
-                tagline: "Depth, meaning, and originality — you bring ideas to life in ways that stand out.",
-                bullets: [
-                    "You express your thoughts with purpose.",
-                    "You create from a place of truth, not trends.",
-                    "You attract the right people by being you."
-                ],
-                highlight: "Start sharing your ideas weekly — consistency builds confidence."
-            }
-        };
+    <ul id="list"></ul>
 
-        // Insert result data
-        if (results[result]) {
-            const data = results[result];
+    <div class="highlight" id="highlight"></div>
 
-            document.getElementById("title").textContent = data.title;
-            document.getElementById("tagline").textContent = data.tagline;
+    <a class="button" href="https://drewchaz.github.io/introvert-quiz/"
+      >Retake Quiz</a
+    >
 
-            const listEl = document.getElementById("list");
-            listEl.innerHTML = data.bullets.map(b => `<li>${b}</li>`).join("");
+    <footer>© 2025 Drew Chaz · Quiet Power, Real Results</footer>
+  </div>
 
-            document.getElementById("highlight").textContent = data.highlight;
-        }
-    </script>
+  <script>
+    // Read ?type= from the URL (fallback to ?result= just in case)
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get("type") || params.get("result") || "hidden";
 
+    // Your four result types
+    const results = {
+      hidden: {
+        title: "Hidden Superpower",
+        tagline:
+          "You’ve been underestimating yourself — your quiet strengths run deeper than you think.",
+        bullets: [
+          "You often see more than you say.",
+          "People feel grounded and safe around you.",
+          "You notice patterns and details others miss."
+        ],
+        highlight:
+          "Your next move: choose one place in your life to stop shrinking back and show up 10% more boldly."
+      },
+      thinker: {
+        title: "Deep Thinker",
+        tagline:
+          "Your mind is a processing powerhouse — when you trust it, it becomes your biggest advantage.",
+        bullets: [
+          "You analyze before you act — and that saves you from impulsive mistakes.",
+          "You’re great at connecting dots and spotting what others overlook.",
+          "People come to you when they want a thoughtful, honest perspective."
+        ],
+        highlight:
+          "Your next move: take one decision you’ve been overthinking and give yourself a 24-hour deadline to choose and move."
+      },
+      leader: {
+        title: "Quiet Leader",
+        tagline:
+          "You don’t lead with volume — you lead with presence, follow-through, and calm under pressure.",
+        bullets: [
+          "People naturally look to you when things get stressful.",
+          "You lead by example, not by shouting the loudest.",
+          "Your integrity makes people trust you — even if you’re not the one talking the most."
+        ],
+        highlight:
+          "Your next move: pick one space (work, home, or online) where you’ll speak up once this week with a clear, confident point."
+      },
+      visionary: {
+        title: "Quiet Visionary",
+        tagline:
+          "Your ideas are built for long-term impact — now it’s about giving them structure and momentum.",
+        bullets: [
+          "You think ahead while others react.",
+          "You see big-picture possibilities and long-term outcomes.",
+          "Your ideas can change lives when you give them a plan and a timeline."
+        ],
+        highlight:
+          "Your next move: choose a 30-day project and channel your ideas into something tangible and shareable."
+      }
+    };
+
+    const data = results[type] || results.hidden;
+
+    document.getElementById("title").textContent = data.title;
+    document.getElementById("tagline").textContent = data.tagline;
+
+    const listEl = document.getElementById("list");
+    listEl.innerHTML = data.bullets
+      .map((item) => `<li>${item}</li>`)
+      .join("");
+
+    document.getElementById("highlight").textContent = data.highlight;
+  </script>
 </body>
+</html>
 </html>
