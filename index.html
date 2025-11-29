@@ -459,33 +459,123 @@
 
     function calculateAndRedirect() {
       const ratings = document.querySelectorAll('.rating');
-      let total = 0;
-      let complete = true;
+  let total = 0;
+  let complete = true;
 
-      ratings.forEach(section => {
-        const selected = section.querySelector('button.selected');
-        if (selected) {
-          total += parseInt(selected.textContent, 10);
-        } else {
-          complete = false;
-        }
-      });
-
-      if (!complete) {
-        alert('Please answer all 10 questions before continuing.');
-        return;
-      }
-
-      let resultType = '';
-      if (total <= 20) resultType = 'hidden';
-      else if (total <= 30) resultType = 'thinker';
-      else if (total <= 40) resultType = 'leader';
-      else resultType = 'visionary';
-
-      // sends to result.html in the same folder
-      const redirectUrl = `result.html?type=${resultType}`;
-      window.location.href = redirectUrl;
+  ratings.forEach(section => {
+    const selected = section.querySelector('button.selected');
+    if (selected) {
+      total += parseInt(selected.textContent, 10);
+    } else {
+      complete = false;
     }
+  });
+
+  if (!complete) {
+    alert('Please answer all 10 questions before continuing.');
+    return;
+  }
+
+  let resultType = '';
+  if (total <= 20) resultType = 'hidden';
+  else if (total <= 30) resultType = 'thinker';
+  else if (total <= 40) resultType = 'leader';
+  else resultType = 'visionary';
+
+  window.location.href = `result.html?type=${resultType}`;
+}
+3️⃣ Replace the entire function with this version:
+js
+Copy code
+function calculateAndRedirect() {
+  const ratings = document.querySelectorAll('.rating');
+  let total = 0;
+  let complete = true;
+
+  ratings.forEach(section => {
+    const selected = section.querySelector('button.selected');
+    if (selected) {
+      total += parseInt(selected.textContent, 10);
+    } else {
+      complete = false;
+    }
+  });
+
+  if (!complete) {
+    alert('Please answer all 10 questions before continuing.');
+    return;
+  }
+
+  let resultType = '';
+  if (total <= 20) resultType = 'hidden';
+  else if (total <= 30) resultType = 'thinker';
+  else if (total <= 40) resultType = 'leader';
+  else resultType = 'visionary';
+
+  // 👇 Replace these with your REAL Flodesk form URLs
+  const flodeskUrls = {
+    hidden:   'const ratings = document.querySelectorAll('.rating');
+  let total = 0;
+  let complete = true;
+
+  ratings.forEach(section => {
+    const selected = section.querySelector('button.selected');
+    if (selected) {
+      total += parseInt(selected.textContent, 10);
+    } else {
+      complete = false;
+    }
+  });
+
+  if (!complete) {
+    alert('Please answer all 10 questions before continuing.');
+    return;
+  }
+
+  let resultType = '';
+  if (total <= 20) resultType = 'hidden';
+  else if (total <= 30) resultType = 'thinker';
+  else if (total <= 40) resultType = 'leader';
+  else resultType = 'visionary';
+
+  window.location.href = `result.html?type=${resultType}`;
+}
+3️⃣ Replace the entire function with this version:
+js
+Copy code
+function calculateAndRedirect() {
+  const ratings = document.querySelectorAll('.rating');
+  let total = 0;
+  let complete = true;
+
+  ratings.forEach(section => {
+    const selected = section.querySelector('button.selected');
+    if (selected) {
+      total += parseInt(selected.textContent, 10);
+    } else {
+      complete = false;
+    }
+  });
+
+  if (!complete) {
+    alert('Please answer all 10 questions before continuing.');
+    return;
+  }
+
+ let resultType = '';
+  if (total <= 20) resultType = 'hidden';
+  else if (total <= 30) resultType = 'thinker';
+  else if (total <= 40) resultType = 'leader';
+  else resultType = 'visionary';
+
+  // 👇 Replace these with your REAL Flodesk form URLs
+  const flodeskUrls = {
+    hidden:   'https://drewchaz.myflodesk.com/re9nusrv1c',
+    thinker:  'https://drewchaz.myflodesk.com/u79v7dpisp',
+    leader:   'https://drewchaz.myflodesk.com/zthr15k6sf',
+    visionary:'https://drewchaz.myflodesk.com/eb6ryk8y14'
+  };
+   
   </script>
 </body>
 </html>
