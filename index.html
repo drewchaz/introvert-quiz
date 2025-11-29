@@ -1,161 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Introvert Superpower Quiz</title>
+
+  <!-- Brand Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
+    :root {
+      --dc-navy: #001f3d;
+      --dc-slate: #2d5f8b;
+      --dc-light: #9bbad7;
+      --dc-lavender: #abaeed;
+      --dc-bg: #f6f2f2;
+      --dc-white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f7ff;
       margin: 0;
-      padding: 20px;
-    }
-    .quiz-section {
-      background: #f0ebff;
-      border: 2px solid #6b54b6;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    .quiz-title {
-      font-size: 24px;
-      font-weight: bold;
-      color: #6b54b6;
-    }
-    .quiz-text {
-      font-size: 18px;
-      color: #333;
-      margin: 10px 0;
-    }
-    .rating {
+      padding: 0;
+      min-height: 100vh;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, var(--dc-bg), var(--dc-light));
+      color: var(--dc-navy);
       display: flex;
-      gap: 10px;
+      align-items: center;
+      justify-content: center;
     }
-    .rating button {
-      width: 40px;
-      height: 40px;
-      border: 2px solid #6b54b6;
-      border-radius: 50%;
-      background: white;
-      color: #6b54b6;
-      font-size: 16px;
-      cursor: pointer;
+
+    .quiz-wrapper {
+      width: 100%;
+      padding: 24px 12px;
     }
-    .rating button.selected {
-      background: #6b54b6;
-      color: white;
+
+    .quiz-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: var(--dc-white);
+      border-radius: 18px;
+      padding: 28px 22px;
+      box-shadow: 0 16px 45px rgba(0, 31, 61, 0.16);
+      border-top: 6px solid var(--dc-slate);
     }
-    .submit {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 5px;
-      background: #6b54b6;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <h1 style="text-align:center; color:#6b54b6;">Introvert Superpower Quiz</h1>
 
-  <div id="quiz">
-    <div class="quiz-section" data-question="q1">
-      <div class="quiz-title">Creative Flow</div>
-      <div class="quiz-text">I get my best ideas when I'm alone or in nature.</div>
-      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
-    </div>
-    <div class="quiz-section" data-question="q2">
-      <div class="quiz-title">Energy Recharge</div>
-      <div class="quiz-text">I regularly create space to recharge, without guilt.</div>
-      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
-    </div>
-    <div class="quiz-section" data-question="q3">
-      <div class="quiz-title">Strategic Thinking</div>
-      <div class="quiz-text">I often notice details and patterns others miss.</div>
-      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
-    </div>
-    <div class="quiz-section" data-question="q4">
-      <div class="quiz-title">Authentic Presence</div>
-      <div class="quiz-text">I don't need to be the loudest to be impactful.</div>
-      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
-    </div>
-    <div class="quiz-section" data-question="q5">
-      <div class="quiz-title">Boundaries & Balance</div>
-      <div class="quiz-text">I say no without overexplaining or apologizing.</div>
-      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
-    </div>
-    <div class="quiz-section" data-question="q6">
-      <div class="quiz-title">Focused Listener</div>
-      <div class="quiz-text">People feel truly heard when I listen — even in silence.</div>
-      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
-    </div>
-    <div class="quiz-section" data-question="q7">
-      <div class="quiz-title">Solo Recharge</div>
-      <div class="quiz-text">I often choose solitude over social plans to reset my energy.</div>
-      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
-    </div>
-    <div class="quiz-section" data-question="q8">
-      <div class="quiz-title">Purposeful Speaker</div>
-      <div class="quiz-text">I only speak when I feel what I say will matter.</div>
-      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
-    </div>
-    <div class="quiz-section" data-question="q9">
-      <div class="quiz-title">Detail-Oriented</div>
-      <div class="quiz-text">I notice things most people overlook — and it helps me plan better.</div>
-      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
-    </div>
-    <div class="quiz-section" data-question="q10">
-      <div class="quiz-title">Low-Drama Boundaries</div>
-      <div class="quiz-text">I’ve learned how to set boundaries without causing drama.</div>
-      <div class="rating"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
-    </div>
-    <button class="submit" onclick="calculateAndRedirect()">See My Result</button>
-  </div>
-
-  <script>
-    document.querySelectorAll('.rating').forEach(section => {
-      const buttons = section.querySelectorAll('button');
-      buttons.forEach(button => {
-        button.addEventListener('click', () => {
-          buttons.forEach(btn => btn.classList.remove('selected'));
-          button.classList.add('selected');
-        });
-      });
-    });
-
-    function calculateAndRedirect() {
-      const ratings = document.querySelectorAll('.rating');
-      let total = 0;
-      let complete = true;
-      ratings.forEach(section => {
-        const selected = section.querySelector('button.selected');
-        if (selected) {
-          total += parseInt(selected.textContent);
-        } else {
-          complete = false;
-        }
-      });
-
-      if (!complete) {
-        alert('Please answer all 10 questions before continuing.');
-        return;
+    @media (min-width: 768px) {
+      .quiz-container {
+        padding: 36px 40px;
       }
-
-      let resultType = '';
-      if (total <= 20) resultType = 'hidden';
-      else if (total <= 30) resultType = 'thinker';
-      else if (total <= 40) resultType = 'leader';
-      else resultType = 'visionary';
-
-      const redirectUrl = `https://drewchaz.github.io/quiz-results/result.html?type=${resultType}`;
-
-      window.location.href = redirectUrl;
     }
-  </script>
-</body>
-</html>
+
+    /* Header / Title */
+
+    .quiz-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .quiz-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--dc-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .quiz-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .quiz-title-block h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", "Times New Roman", serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--dc-navy);
+    }
+
+    .quiz-title-block p {
+      margin: 4px 0 0;
+      font-size: 0.95rem;
+      color: #4a6076;
+    }
+
+    .quiz-intro {
+      margin-top: 10px;
+      margin-bottom: 24px;
+      f
 
 
 
