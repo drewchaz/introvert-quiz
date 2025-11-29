@@ -446,135 +446,59 @@
   </div>
 
   <script>
-    // Rating button behavior
-    document.querySelectorAll('.rating').forEach(section => {
-      const buttons = section.querySelectorAll('button');
-      buttons.forEach(button => {
-        button.addEventListener('click', () => {
-          buttons.forEach(btn => btn.classList.remove('selected'));
-          button.classList.add('selected');
-        });
+    // Handle button selection for each question
+   document.querySelectorAll('.rating').forEach(section => {
+    const buttons = section.querySelectorAll('button');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Clear previous selection in this question
+        buttons.forEach(b => b.classList.remove('selected'));
+        // Mark the clicked one as selected
+        button.classList.add('selected');
       });
     });
-
-    function calculateAndRedirect() {
-      const ratings = document.querySelectorAll('.rating');
-  let total = 0;
-  let complete = true;
-
-  ratings.forEach(section => {
-    const selected = section.querySelector('button.selected');
-    if (selected) {
-      total += parseInt(selected.textContent, 10);
-    } else {
-      complete = false;
-    }
   });
 
-  if (!complete) {
-    alert('Please answer all 10 questions before continuing.');
-    return;
-  }
+  // Calculate score and send to the right Flodesk form (or result page)
+  function calculateAndRedirect() {
+    const ratings = document.querySelectorAll('.rating');
+    let total = 0;
+    let complete = true;
 
-  let resultType = '';
-  if (total <= 20) resultType = 'hidden';
-  else if (total <= 30) resultType = 'thinker';
-  else if (total <= 40) resultType = 'leader';
-  else resultType = 'visionary';
+    ratings.forEach(section => {
+      const selected = section.querySelector('button.selected');
+      if (selected) {
+        total += parseInt(selected.textContent, 10);
+      } else {
+        complete = false;
+      }
+    });
 
-  window.location.href = `result.html?type=${resultType}`;
-}
-3️⃣ Replace the entire function with this version:
-js
-Copy code
-function calculateAndRedirect() {
-  const ratings = document.querySelectorAll('.rating');
-  let total = 0;
-  let complete = true;
-
-  ratings.forEach(section => {
-    const selected = section.querySelector('button.selected');
-    if (selected) {
-      total += parseInt(selected.textContent, 10);
-    } else {
-      complete = false;
+    if (!complete) {
+      alert('Please answer all 10 questions before continuing.');
+      return;
     }
-  });
 
-  if (!complete) {
-    alert('Please answer all 10 questions before continuing.');
-    return;
+    let resultType = '';
+    if (total <= 20) resultType = 'hidden';
+    else if (total <= 30) resultType = 'thinker';
+    else if (total <= 40) resultType = 'leader';
+    else resultType = 'visionary';
+
+    // TODO: replace these with your actual Flodesk form URLs
+    const flodeskUrls = {
+      hidden:   'https://drewchaz.myflodesk.com/re9nusrv1c',
+      thinker:  'https://drewchaz.myflodesk.com/u79v7dpisp',
+      leader:   'https://Yhttps://drewchaz.myflodesk.com/zthr15k6sf',
+      visionary:'https://drewchaz.myflodesk.com/eb6ryk8y14'
+    };
+
+    // If a URL is missing, fall back to direct result page
+    const fallbackUrl = `result.html?type=${resultType}`;
+    const target = flodeskUrls[resultType] || fallbackUrl;
+
+    window.location.href = target;
   }
-
-  let resultType = '';
-  if (total <= 20) resultType = 'hidden';
-  else if (total <= 30) resultType = 'thinker';
-  else if (total <= 40) resultType = 'leader';
-  else resultType = 'visionary';
-
-  // 👇 Replace these with your REAL Flodesk form URLs
-  const flodeskUrls = {
-    hidden:   'const ratings = document.querySelectorAll('.rating');
-  let total = 0;
-  let complete = true;
-
-  ratings.forEach(section => {
-    const selected = section.querySelector('button.selected');
-    if (selected) {
-      total += parseInt(selected.textContent, 10);
-    } else {
-      complete = false;
-    }
-  });
-
-  if (!complete) {
-    alert('Please answer all 10 questions before continuing.');
-    return;
-  }
-
-  let resultType = '';
-  if (total <= 20) resultType = 'hidden';
-  else if (total <= 30) resultType = 'thinker';
-  else if (total <= 40) resultType = 'leader';
-  else resultType = 'visionary';
-
-  window.location.href = `result.html?type=${resultType}`;
-}
-3️⃣ Replace the entire function with this version:
-js
-Copy code
-function calculateAndRedirect() {
-  const ratings = document.querySelectorAll('.rating');
-  let total = 0;
-  let complete = true;
-
-  ratings.forEach(section => {
-    const selected = section.querySelector('button.selected');
-    if (selected) {
-      total += parseInt(selected.textContent, 10);
-    } else {
-      complete = false;
-    }
-  });
-
-  if (!complete) {
-    alert('Please answer all 10 questions before continuing.');
-    return;
-  }
-
- let resultType = '';
-  if (total <= 20) resultType = 'hidden';
-  else if (total <= 30) resultType = 'thinker';
-  else if (total <= 40) resultType = 'leader';
-  else resultType = 'visionary';
-
-  // 👇 Replace these with your REAL Flodesk form URLs
-  const flodeskUrls = {
-    hidden:   'https://drewchaz.myflodesk.com/re9nusrv1c',
-    thinker:  'https://drewchaz.myflodesk.com/u79v7dpisp',
-    leader:   'https://drewchaz.myflodesk.com/zthr15k6sf',
-    visionary:'https://drewchaz.myflodesk.com/eb6ryk8y14'
-  };
    
   </script>
 </body>
